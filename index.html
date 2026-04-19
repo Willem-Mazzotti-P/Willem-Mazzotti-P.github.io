@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Willem Mazzotti Pallard – CV</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
@@ -360,16 +361,13 @@
 <!-- HERO -->
 <header class="hero" id="top">
     <div class="hero-inner">
-        <img src="Willem Mazzotti Pallard.jpg" alt="Willem Mazzotti Pallard" class="hero-photo"
-             onerror="this.style.display='none'">
         <div class="hero-text">
             <h1>Willem <span>Mazzotti Pallard</span></h1>
             <div class="hero-meta">
-                34 år &middot; Konsult inom energisystem och energiteknik<br>
-                Svenskt och franskt medborgarskap
+                Konsult inom energisystem och energiteknik
             </div>
             <div class="hero-socials">
-                <a href="mailto:willem.mazzotti@gmail.com" title="E-post"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="email-link" data-u="willem.mazzotti" data-d="gmail.com" title="E-post"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.linkedin.com/in/willem-mazzotti/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://orcid.org/0000-0002-9120-8637" target="_blank" rel="noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
                 <a href="https://www.researchgate.net/profile/Willem-Mazzotti-Pallard" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
@@ -841,7 +839,7 @@
 
 <footer>
     Willem Mazzotti Pallard &middot; CV 2026 &middot;
-    <a href="mailto:willem.mazzotti@gmail.com">willem.mazzotti@gmail.com</a>
+    <a href="#" class="email-link" data-u="willem.mazzotti" data-d="gmail.com"><span class="email-text"></span></a>
 </footer>
 
 <script>
@@ -911,6 +909,14 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 // ── Close mobile nav on link click ──
 document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+
+// ── Email obfuscation (assembled at runtime so bots can't scrape) ──
+document.querySelectorAll('.email-link').forEach(a => {
+    const addr = a.dataset.u + '@' + a.dataset.d;
+    a.href = 'mail' + 'to:' + addr;
+    const txt = a.querySelector('.email-text');
+    if (txt) txt.textContent = addr;
 });
 </script>
 
