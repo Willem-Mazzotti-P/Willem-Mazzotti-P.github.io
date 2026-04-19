@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willem Mazzotti Pallard – CV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --default: #001f3b;
+            --primary: #2C59E0;
+            --secondary: #6C24D0;
+            --accent: #AAF0C4;
+            --body: #666666;
+            --emphasis: #2E2E2E;
+            --bg: #FFFFFF;
+            --bg-alt: #f8f9fc;
+            --border: #e2e6ef;
+            --shadow: 0 2px 12px rgba(0, 31, 59, 0.08);
+            --shadow-hover: 0 6px 24px rgba(0, 31, 59, 0.14);
+            --radius: 10px;
+            --transition: 0.3s cubic-bezier(.4,0,.2,1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--emphasis);
+            background: var(--bg);
+            line-height: 1.65;
+            font-size: 15px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            transition: box-shadow var(--transition);
+        }
+        nav.scrolled { box-shadow: var(--shadow); }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px; height: 56px;
+        }
+        .nav-brand {
+            font-weight: 700; font-size: 1.05rem; color: var(--default);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .nav-links a {
+            text-decoration: none; color: var(--body); font-size: 0.82rem;
+            padding: 6px 12px; border-radius: 6px; transition: all var(--transition);
+            font-weight: 500;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary); background: rgba(44,89,224,0.07);
+        }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .nav-toggle span {
+            display: block; width: 22px; height: 2px; background: var(--default);
+            margin: 5px 0; transition: var(--transition);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 120px 24px 60px;
+            background: linear-gradient(135deg, var(--default) 0%, #0a2f5c 50%, var(--secondary) 100%);
+            color: white; position: relative; overflow: hidden;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+        .hero-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
+        }
+        .hero-photo {
+            width: 150px; height: 150px; border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover; flex-shrink: 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        }
+        .hero-text { flex: 1; min-width: 280px; }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif; font-size: 2.4rem;
+            margin-bottom: 8px; letter-spacing: -0.5px;
+        }
+        .hero-text h1 span { font-weight: 400; }
+        .hero-meta { opacity: 0.85; font-size: 0.95rem; margin-bottom: 16px; line-height: 1.7; }
+        .hero-socials { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-socials a {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.12); color: white;
+            text-decoration: none; font-size: 1.1rem;
+            transition: all var(--transition); border: 1px solid rgba(255,255,255,0.15);
+        }
+        .hero-socials a:hover {
+            background: var(--accent); color: var(--default);
+            transform: translateY(-2px); box-shadow: 0 4px 16px rgba(170,240,196,0.4);
+        }
+
+        /* ── MAIN ── */
+        main { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        section { padding: 56px 0 40px; }
+        section + section { border-top: 1px solid var(--border); }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem; color: var(--default);
+            margin-bottom: 28px; position: relative; padding-left: 18px;
+        }
+        .section-title::before {
+            content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
+            width: 4px; border-radius: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        /* ── PROFILE ── */
+        .profile-text {
+            font-size: 1rem; color: var(--body); max-width: 800px; line-height: 1.8;
+        }
+
+        /* ── TIMELINE ── */
+        .timeline { position: relative; padding-left: 28px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 1px;
+        }
+        .timeline-item {
+            position: relative; margin-bottom: 32px;
+            padding: 20px 24px; background: var(--bg-alt);
+            border-radius: var(--radius); border: 1px solid var(--border);
+            transition: all var(--transition); cursor: default;
+        }
+        .timeline-item:hover {
+            box-shadow: var(--shadow-hover); border-color: rgba(44,89,224,0.2);
+            transform: translateX(4px);
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -24px; top: 26px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--primary); border: 3px solid var(--bg);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+        .timeline-title { font-weight: 700; font-size: 1.05rem; color: var(--default); }
+        .timeline-date {
+            font-size: 0.8rem; color: var(--primary); font-weight: 600;
+            background: rgba(44,89,224,0.08); padding: 3px 10px; border-radius: 20px;
+            white-space: nowrap;
+        }
+        .timeline-subtitle { font-size: 0.88rem; color: var(--secondary); margin: 4px 0 0; font-weight: 500; }
+        .timeline-details {
+            margin-top: 12px; font-size: 0.9rem; color: var(--body);
+            overflow: hidden; transition: max-height 0.5s ease;
+        }
+        .timeline-details ul { padding-left: 18px; }
+        .timeline-details li { margin-bottom: 6px; }
+        .timeline-toggle {
+            background: none; border: none; color: var(--primary);
+            font-size: 0.82rem; font-weight: 600; cursor: pointer;
+            margin-top: 8px; padding: 4px 0;
+            display: inline-flex; align-items: center; gap: 4px;
+        }
+        .timeline-toggle .arrow { transition: transform var(--transition); display: inline-block; }
+        .timeline-toggle.open .arrow { transform: rotate(180deg); }
+
+        /* ── SKILLS ── */
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .skill-card {
+            padding: 24px; background: var(--bg-alt);
+            border-radius: var(--radius); border: 1px solid var(--border);
+            transition: all var(--transition);
+        }
+        .skill-card:hover {
+            box-shadow: var(--shadow-hover); border-color: rgba(44,89,224,0.2);
+            transform: translateY(-3px);
+        }
+        .skill-card h3 {
+            font-size: 0.92rem; color: var(--default); margin-bottom: 12px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-tag {
+            font-size: 0.78rem; padding: 4px 10px;
+            background: white; border: 1px solid var(--border);
+            border-radius: 20px; color: var(--body); transition: all var(--transition);
+            font-weight: 500;
+        }
+        .skill-tag:hover {
+            border-color: var(--primary); color: var(--primary); background: rgba(44,89,224,0.04);
+        }
+
+        /* ── PROJECTS ── */
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+        }
+        .project-card {
+            padding: 20px 24px; background: var(--bg-alt);
+            border-radius: var(--radius); border: 1px solid var(--border);
+            transition: all var(--transition); position: relative;
+            border-left: 3px solid transparent;
+        }
+        .project-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .project-card .p-title { font-weight: 700; font-size: 0.95rem; color: var(--default); margin-bottom: 6px; }
+        .project-card .p-desc { font-size: 0.85rem; color: var(--body); line-height: 1.6; }
+        .project-card .p-year {
+            display: inline-block; margin-top: 10px;
+            font-size: 0.75rem; font-weight: 600; color: var(--primary);
+            background: rgba(44,89,224,0.08); padding: 2px 10px; border-radius: 20px;
+        }
+        .project-rank {
+            position: absolute; top: 12px; right: 14px;
+            font-size: 0.7rem; font-weight: 700; color: var(--accent);
+            background: var(--default); width: 26px; height: 26px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* ── PUBLICATIONS ── */
+        .pub-section { margin-bottom: 28px; }
+        .pub-section h3 {
+            font-size: 0.95rem; color: var(--default); margin-bottom: 14px;
+            font-weight: 700; padding-bottom: 6px; border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+        .pub-list { list-style: none; }
+        .pub-list li {
+            font-size: 0.83rem; color: var(--body); padding: 10px 14px;
+            border-radius: 6px; margin-bottom: 4px; line-height: 1.6;
+            transition: background var(--transition); position: relative;
+            padding-left: 24px;
+        }
+        .pub-list li::before {
+            content: '›'; position: absolute; left: 8px; top: 10px;
+            color: var(--primary); font-weight: 700; font-size: 1rem;
+        }
+        .pub-list li:hover { background: var(--bg-alt); }
+        .pub-list a { color: var(--primary); text-decoration: none; }
+        .pub-list a:hover { text-decoration: underline; }
+        .pub-toggle-btn {
+            background: none; border: 1px solid var(--border); color: var(--primary);
+            padding: 6px 16px; border-radius: 20px; font-size: 0.82rem;
+            cursor: pointer; font-weight: 600; margin-top: 6px;
+            transition: all var(--transition);
+        }
+        .pub-toggle-btn:hover { background: rgba(44,89,224,0.06); border-color: var(--primary); }
+
+        /* ── OTHER ── */
+        .other-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        .other-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; background: var(--bg-alt); border-radius: 8px;
+            border: 1px solid var(--border); font-size: 0.9rem;
+        }
+        .other-item .o-name { font-weight: 600; color: var(--default); }
+        .other-item .o-role { font-size: 0.82rem; color: var(--body); }
+        .other-item .o-years { font-size: 0.78rem; color: var(--primary); font-weight: 600; }
+
+        .refs { font-size: 0.95rem; color: var(--body); font-style: italic; }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center; padding: 40px 24px; margin-top: 40px;
+            background: var(--default); color: rgba(255,255,255,0.6);
+            font-size: 0.82rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* ── FILTER BUTTONS ── */
+        .filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
+            background: white; font-size: 0.8rem; font-weight: 600;
+            cursor: pointer; color: var(--body); transition: all var(--transition);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary); color: white; border-color: var(--primary);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero-inner { flex-direction: column; text-align: center; gap: 24px; }
+            .hero-socials { justify-content: center; }
+            .hero-text h1 { font-size: 1.8rem; }
+            .nav-links { display: none; flex-direction: column; position: absolute;
+                top: 56px; left: 0; right: 0; background: white;
+                border-bottom: 1px solid var(--border); padding: 12px;
+                box-shadow: var(--shadow);
+            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            nav, .timeline-toggle, .filter-bar, .pub-toggle-btn, .nav-toggle { display: none !important; }
+            .hero { padding-top: 40px; }
+            .timeline-details { max-height: none !important; }
+            section { page-break-inside: avoid; }
+            .project-card, .skill-card, .timeline-item { box-shadow: none; border: 1px solid #ddd; }
+        }
+
+        /* ── ANIMATIONS ── */
+        .fade-in {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#top" class="nav-brand">Willem Mazzotti Pallard</a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Meny">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="#profil">Profil</a>
+            <a href="#erfarenhet">Erfarenhet</a>
+            <a href="#utbildning">Utbildning</a>
+            <a href="#fardigheter">Färdigheter</a>
+            <a href="#projekt">Projekt</a>
+            <a href="#publikationer">Publikationer</a>
+            <a href="#ovrigt">Övrigt</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+    <div class="hero-inner">
+        <img src="Willem Mazzotti Pallard.jpg" alt="Willem Mazzotti Pallard" class="hero-photo"
+             onerror="this.style.display='none'">
+        <div class="hero-text">
+            <h1>Willem <span>Mazzotti Pallard</span></h1>
+            <div class="hero-meta">
+                34 år &middot; Konsult inom energisystem och energiteknik<br>
+                Svenskt och franskt medborgarskap
+            </div>
+            <div class="hero-socials">
+                <a href="mailto:willem.mazzotti@gmail.com" title="E-post"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/willem-mazzotti/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://orcid.org/0000-0002-9120-8637" target="_blank" rel="noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Willem-Mazzotti-Pallard" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="https://github.com/Willem-Mazzotti-P" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.kth.se/profile/mazzotti/" target="_blank" rel="noopener" title="KTH"><i class="fas fa-at"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- PROFIL -->
+<section id="profil" class="fade-in">
+    <h2 class="section-title">Profil</h2>
+    <p class="profile-text">
+        Jag är en engagerad och nyfiken energiingenjör med ett starkt driv för ny teknik, utveckling, vetenskap och matematik. Jag vill gärna bidra till att lösa samhällets nutida och framtida utmaningar, inte minst kring klimatkrisen och energiomställningen.
+        Min bakgrund inkluderar arbete med sektorkoppling mellan elsystemet, värmepumpar och fjärrvärme, där energilager har spelat en central roll i olika projekt.
+        Jag har dessutom ett stort intresse för, och jobbat med, elektrifiering, elmarknader och dess utveckling på kort och långt sikt.
+        Jag tror att energi- och fastighetsbranschen har mycket att vinna på digitalisering och har därför utvecklat mina digitala färdigheter parallellt till mina kompetenser inom energisystem och energiteknik.
+        Jag drivs av att lära mig nya saker och stötta andra när jag kan.
+        Med erfarenhet från både mindre nationella och större internationella projekt har jag upptäckt att jag trivs bäst i en miljö som är dynamisk och kombinerar båda, där lagarbete står i fokus och där jag får möjlighet att tillämpa mina analytiska förmågor.
+    </p>
+</section>
+
+<!-- ERFARENHET -->
+<section id="erfarenhet" class="fade-in">
+    <h2 class="section-title">Arbetslivserfarenhet</h2>
+    <div class="timeline">
+
+        <!-- BD -->
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">Bengt Dahlgren AB</div>
+                    <div class="timeline-subtitle">Co-avdelningschef FoU geoenergi · Projektledare · Affärsutveckling · Partner</div>
+                </div>
+                <span class="timeline-date">Jun 2015 – Nu</span>
+            </div>
+            <div class="timeline-details" id="bd-details" style="max-height:0">
+                <ul>
+                    <li>Konsult med inriktning inom energisystem och digitalisering</li>
+                    <li>Etablering av ett digitalt arbetssätt baserat på programmering (Julia/Python), Copilot (Agent, VS Code), GitHub, GIS och interaktiva HTML-rapporter (Quarto)</li>
+                    <li>Simulering av lokal (DSO) flexibilitetsmarknad med värmepumpar genom auktioner, inkl. prediktering av elanvändning mha maskininlärning (SVR-regression)</li>
+                    <li>Datainsamling och datadriven energianalys i Python och Julia (tidsserier), inkl. Fault Detection and Diagnosis (FDD), Model Predictive Control (MPC) och ANN</li>
+                    <li>Funktionsutveckling och optimering av dimensioneringsmjukvara för en känd svensk OEM (agilt arbetssätt)</li>
+                    <li>Medverkade i ett AI-utvecklingsprojekt (RAG) med fokus på internt verksamhetssystem (projektdata och -ekonomi)</li>
+                    <li>Tekno-ekonomisk utvärdering av storskaliga termiska energilager kopplade till kraftvärmeverk, inkl. produktionsoptimering med distributionsbegränsningar och möjlighet att buda på olika stödtjänstmarknader</li>
+                    <li>Ansökan, deltagande och ledande roll i olika nationella och internationella forskningsprojekt</li>
+                    <li>Ansvar över ekonomi, arbetsbeläggning, tidplan, kvalitet, arbetsmiljö, kundkontakt och extern kommunikation för både nationella och internationella forum (avd. 5 personer)</li>
+                </ul>
+            </div>
+            <button class="timeline-toggle" onclick="toggleDetails('bd-details', this)">
+                Visa detaljer <span class="arrow">▾</span>
+            </button>
+        </div>
+
+        <!-- KTH PhD -->
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">Kungliga Tekniska Högskolan</div>
+                    <div class="timeline-subtitle">Doktorand inom bergvärme, geoenergi och borrhåls termiska energilager</div>
+                </div>
+                <span class="timeline-date">Feb 2016 – Dec 2023</span>
+            </div>
+            <div class="timeline-details" id="kth-phd-details" style="max-height:0">
+                <ul>
+                    <li>Matematisk modellering av värmeöverföring, invers modellering och optimering</li>
+                    <li>Kurser på doktorandnivå i datadriven modellering, värmeöverföring och energilagring</li>
+                    <li>Projektledning och samverkan med industriaktörer i forskningsnära miljö, inklusive kravställning, metodval, analys och resultatkommunikation</li>
+                </ul>
+            </div>
+            <button class="timeline-toggle" onclick="toggleDetails('kth-phd-details', this)">
+                Visa detaljer <span class="arrow">▾</span>
+            </button>
+        </div>
+
+        <!-- KTH Research -->
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">Kungliga Tekniska Högskolan</div>
+                    <div class="timeline-subtitle">Forskningsingenjör – Propan värmepumpar, labbtester, numeriska simuleringar, dataanalys</div>
+                </div>
+                <span class="timeline-date">Okt 2013 – Okt 2015</span>
+            </div>
+        </div>
+
+        <!-- EKA -->
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">Energi och Kylanalys</div>
+                    <div class="timeline-subtitle">Projektingenjör / konsult – Avfuktning och kylsystem i ishallar</div>
+                </div>
+                <span class="timeline-date">Feb 2014 &amp; Jul 2014</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- UTBILDNING -->
+<section id="utbildning" class="fade-in">
+    <h2 class="section-title">Utbildning</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">Kungliga Tekniska Högskolan</div>
+                    <div class="timeline-subtitle">Doktorand inom Energiteknik – pågående, planerad disputation Q3 2026</div>
+                </div>
+                <span class="timeline-date">2016 – 2023</span>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">National Institute of Applied Science (INSA), Strasbourg</div>
+                    <div class="timeline-subtitle">Civilingenjör energiteknik</div>
+                </div>
+                <span class="timeline-date">2008 – 2013</span>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">Kungliga Tekniska Högskolan</div>
+                    <div class="timeline-subtitle">Examensarbete</div>
+                </div>
+                <span class="timeline-date">2013</span>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <div>
+                    <div class="timeline-title">University of Iceland</div>
+                    <div class="timeline-subtitle">Utbytestermin</div>
+                </div>
+                <span class="timeline-date">2011</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FÄRDIGHETER -->
+<section id="fardigheter" class="fade-in">
+    <h2 class="section-title">Färdigheter</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>Programmering, data &amp; verktyg</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Julia</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">AI-assisterad utveckling</span>
+                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">LaTeX</span>
+                <span class="skill-tag">Quarto</span>
+                <span class="skill-tag">VBA</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">PostgreSQL</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Simulering</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">COMSOL Multiphysics</span>
+                <span class="skill-tag">TRNSYS</span>
+                <span class="skill-tag">CoolProp</span>
+                <span class="skill-tag">EED</span>
+                <span class="skill-tag">FEFLOW</span>
+                <span class="skill-tag">IMST-ART</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Datainsamling, styrning, GIS &amp; övrigt</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">ArcGIS</span>
+                <span class="skill-tag">QGIS</span>
+                <span class="skill-tag">VEE Agilent</span>
+                <span class="skill-tag">ClimaCheck</span>
+                <span class="skill-tag">Inkscape</span>
+                <span class="skill-tag">MS Office</span>
+                <span class="skill-tag">Slack</span>
+                <span class="skill-tag">AutoCAD</span>
+                <span class="skill-tag">Zotero</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Språk</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">🇫🇷 Franska (modersmål)</span>
+                <span class="skill-tag">🇸🇪 Svenska (flytande)</span>
+                <span class="skill-tag">🇬🇧 Engelska (flytande)</span>
+                <span class="skill-tag">🇪🇸 Spanska (mellan)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJEKT -->
+<section id="projekt" class="fade-in">
+    <h2 class="section-title">Urval av projekt</h2>
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">Alla</button>
+        <button class="filter-btn" onclick="filterProjects('ai-ml', this)">AI / ML</button>
+        <button class="filter-btn" onclick="filterProjects('energi', this)">Energisystem</button>
+        <button class="filter-btn" onclick="filterProjects('international', this)">Internationellt</button>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+
+        <div class="project-card" data-tags="ai-ml energi">
+            <span class="project-rank">1</span>
+            <div class="p-title">EnergiForsk – Effektauktioner med värmepumpar</div>
+            <div class="p-desc">Efterfrågeflexibilitet med värmepumpar genom VCG-auktioner och ML-baserad prediktering av elanvändning</div>
+            <span class="p-year">2025</span>
+        </div>
+
+        <div class="project-card" data-tags="ai-ml energi international">
+            <span class="project-rank">2</span>
+            <div class="p-title">RECOIN – EU-projekt</div>
+            <div class="p-desc">MPC för geoenergianläggningar, Fault Detection and Diagnosis, ANN-baserad datamodell</div>
+            <span class="p-year">2022 – Nu</span>
+        </div>
+
+        <div class="project-card" data-tags="ai-ml energi">
+            <span class="project-rank">3</span>
+            <div class="p-title">Loudden – Energiplanering för ett positivenergidistrikt</div>
+            <div class="p-desc">Laddnings-/urladdningsschema för elbilar, V2G, storskaliga termiska energilager kopplade till fjärrvärme</div>
+            <span class="p-year">2022 – 2025</span>
+        </div>
+
+        <div class="project-card" data-tags="ai-ml energi">
+            <span class="project-rank">4</span>
+            <div class="p-title">Funktionsutveckling till mjukvara och optimering</div>
+            <div class="p-desc">Simulering av luftbehandlingsaggregat kopplad till värmepumpar för en känd OEM</div>
+            <span class="p-year">2025 – Nu</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">5</span>
+            <div class="p-title">Storskalig bergrumsvärmelager kopplad till fjärrvärme</div>
+            <div class="p-desc">Tekno-ekonomisk utvärdering inkl. ökad elproduktion vintertid, flexibilitet och FCR-marknaden</div>
+            <span class="p-year">2022 – Nu</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">6</span>
+            <div class="p-title">EnergiForsk – Termiska energilager</div>
+            <div class="p-desc">Högtemperatur BTES i samband med kraftvärmeverk – Design, simuleringar och Pareto-optimering</div>
+            <span class="p-year">2018 – 2021</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">7</span>
+            <div class="p-title">Drifttjänst Geoenergi – Akademiska Hus</div>
+            <div class="p-desc">Driftuppföljning och -optimering av en storskalig geoenergianläggning</div>
+            <span class="p-year">2025 – Nu</span>
+        </div>
+
+        <div class="project-card" data-tags="energi international">
+            <span class="project-rank">8</span>
+            <div class="p-title">IEA – HPT Annex 52</div>
+            <div class="p-desc">Långtidsövervakning och prestandauppföljning av storskaliga geoenergisystem med värmepumpar</div>
+            <span class="p-year">2018 – 2022</span>
+        </div>
+
+        <div class="project-card" data-tags="energi international">
+            <span class="project-rank">9</span>
+            <div class="p-title">USES4HEAT – EU-projekt</div>
+            <div class="p-desc">Demonstrationsprojekt om säsongslagring av värme i fjärrvärmesystem med spillvärme och solenergi</div>
+            <span class="p-year">2022 – Nu</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">10</span>
+            <div class="p-title">Hefaistos – Tekniska Verken</div>
+            <div class="p-desc">Dynamisk simulering och design av ett 1500 st. borrhålsenergilager i kombination med kraftvärmeverk</div>
+            <span class="p-year">2017</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">11</span>
+            <div class="p-title">Greenergy – "Energy as a service"</div>
+            <div class="p-desc">Förstudier för geoenergi- och fjärrvärmelösningar (lönsamhetskalkyler) med SEB Nordic Green Energy Fund</div>
+            <span class="p-year">2022 – 2023</span>
+        </div>
+
+        <div class="project-card" data-tags="international energi">
+            <span class="project-rank">12</span>
+            <div class="p-title">Världsbanken – Decarbonization Uzbekistan</div>
+            <div class="p-desc">Samhällsekonomisk utvärdering av miljövänlig teknik för värme och kyla i Uzbekistan</div>
+            <span class="p-year">2022</span>
+        </div>
+
+        <div class="project-card" data-tags="international energi">
+            <span class="project-rank">13</span>
+            <div class="p-title">IEA – HPT Annex 27</div>
+            <div class="p-desc">Kvalitetsstyrning i design, konstruktion och drift av borrhålssystem (riktlinjer)</div>
+            <span class="p-year">2016 – 2020</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">14</span>
+            <div class="p-title">Optimalt flöde i bergvärmepumpsystem</div>
+            <div class="p-desc">Modellering, optimering, labbtester</div>
+            <span class="p-year">2022 – 2023</span>
+        </div>
+
+        <div class="project-card" data-tags="energi">
+            <span class="project-rank">15</span>
+            <div class="p-title">Djupa borrhål för bergvärmepumpar</div>
+            <div class="p-desc">Simuleringar, labbtester, tekno-ekonomiska analyser</div>
+            <span class="p-year">2016 – 2018</span>
+        </div>
+
+        <div class="project-card" data-tags="international energi">
+            <span class="project-rank">16</span>
+            <div class="p-title">Next Heat Pump Generation – EU project</div>
+            <div class="p-desc">Labbtest, dataanalys och optimering av propan värmepumpar</div>
+            <span class="p-year">2013 – 2015</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- PUBLIKATIONER -->
+<section id="publikationer" class="fade-in">
+    <h2 class="section-title">Publikationer och meriter</h2>
+
+    <div class="pub-section">
+        <h3>Peer-reviewed journal articles</h3>
+        <ul class="pub-list">
+            <li>Aranzabal, N., Martos, J., Stokuca, M., <strong>Mazzotti Pallard, W.</strong>, Acuña, J., Soret, J., Blum, P., 2020. Novel instruments and methods to estimate depth-specific thermal properties in borehole heat exchangers. <em>Geothermics</em> 86, 101813.</li>
+            <li>Fascì, M.L., <strong>Mazzotti Pallard, W.</strong>, Lazzarotto, A., Claesson, J., 2023. Temperature of energy boreholes accounting for climate change and the built environment. <em>Renewable Energy</em> 202, 1479–1496.</li>
+            <li><strong>Mazzotti Pallard, W.</strong>, Lazzarotto, A., Acuña, J., Palm, B., 2023. Calibration and Uncertainty Quantification for Single-Ended Raman-Based DTS. <em>Sensors</em> 23, 5498.</li>
+            <li><strong>Mazzotti Pallard, W.</strong>, Lazzarotto, A., Acuña Sequera, J., Palm, B., 2020. Design methodology for laboratory scale borehole storage. <em>Geothermics</em> 87, 101856.</li>
+            <li><strong>Mazzotti Pallard, W.</strong>, Lazzarotto, A., 2021. Thermal response tests: A biased parameter estimation procedure? <em>Geothermics</em> 97, 102221.</li>
+            <li>Rolando, D., <strong>Mazzotti Pallard, W.</strong>, Molinari, M., 2022. Long-Term Evaluation of Comfort, Indoor Air Quality and Energy Performance in Buildings. <em>Energies</em> 15, 4955.</li>
+        </ul>
+    </div>
+
+    <div class="pub-section">
+        <h3>Peer-reviewed conference articles</h3>
+        <ul class="pub-list" id="conf-articles">
+            <li>Svensson, E., <strong>Mazzotti Pallard, W.</strong>, Malmberg, M., Chiu, J., 2025. Recharging GSHP Systems with District Heat. <em>European Geothermal Congress</em>, Zürich.</li>
+            <li>Vautrin, A., <strong>Mazzotti Pallard, W.</strong>, Acuña, J., Lazzarotto, A., 2024. Assessing coaxial collector performances. <em>IGSHPA</em>.</li>
+            <li>Malmberg, M., <strong>Mazzotti, W.</strong>, Acuña, J., Lindståhl, H., Lazzarotto, A., 2018. High temperature BTES – A case study. <em>IGSHPA</em>, Stockholm.</li>
+            <li><strong>Mazzotti, W.</strong>, Firmansyah, H., Acuña, J., Stokuca, M., Palm, B., 2018. Newton-Raphson method for parameter estimation in TRT. <em>IGSHPA</em>, Stockholm.</li>
+            <li style="display:none" class="conf-extra">Ignatowicz, M., Acuña, J., <strong>Mazzotti, W.</strong>, Melinder, A., Palm, B., 2016. Methods of BHE flushing, charging and purging in Sweden. <em>EGC 2016</em>, Strasbourg.</li>
+            <li style="display:none" class="conf-extra">Ignatowicz, M., <strong>Mazzotti, W.</strong>, Acuña, J., Melinder, Å., Palm, B., 2016. Alternative alcohol blends as secondary fluids for GSHP. <em>IIR GL2016</em>, Edinburgh.</li>
+            <li style="display:none" class="conf-extra">Ignatowicz, M., <strong>Mazzotti, W.</strong>, Melinder, Å., Palm, B., 2017. Different ethyl alcohol secondary fluids for GSHP in Europe. <em>12th IEA HPC</em>, Rotterdam.</li>
+            <li style="display:none" class="conf-extra">Lazzarotto, A., <strong>Mazzotti Pallard, W.</strong>, 2019. TRT performance evaluation with drifting heat rate. <em>EGC</em>, The Hague.</li>
+            <li style="display:none" class="conf-extra">Lazzarotto, A., <strong>Mazzotti Pallard, W.</strong>, Abuasbeh, M., Acuña, J., 2021. BTES performance through energy and exergy analysis. <em>WGC 2020+1</em>, Reykjavik.</li>
+            <li style="display:none" class="conf-extra"><strong>Mazzotti, W.</strong>, Jiang, Y., Monzó, P., Lazzarotto, A., Acuña, J., Palm, B., 2018. Design of a laboratory borehole storage model. <em>IGSHPA</em>, Stockholm.</li>
+            <li style="display:none" class="conf-extra">Piscopiello, S., <strong>Mazzotti, W.</strong>, Nota, C., Sawalha, S., Palm, B., 2016. Performance evaluation of a large capacity water-water HP. <em>IIR GL2016</em>, Edinburgh.</li>
+            <li style="display:none" class="conf-extra">Rogstam, J., <strong>Mazzotti, W.</strong>, 2014. Ice rink dehumidification systems. <em>11th IEA HPC</em>, Montréal.</li>
+            <li style="display:none" class="conf-extra">Xu, T., Sawalha, S., <strong>Mazzotti, W.</strong>, Palm, B., 2016. Performance evaluation of a large capacity air-water HP. <em>IIR GL2016</em>, Edinburgh.</li>
+        </ul>
+        <button class="pub-toggle-btn" onclick="toggleConf(this)">Visa alla (13 st) ▾</button>
+    </div>
+
+    <div class="pub-section">
+        <h3>Project reports</h3>
+        <ul class="pub-list" id="reports">
+            <li><strong>Mazzotti Pallard, W.</strong>, Månborg, V., Vautrin, A., 2026. Effektauktioner med värmepumpar, en lösning för effektbristen? <em>Energiforsk</em>, Stockholm.</li>
+            <li>Acuña, J., Lazzarotto, A., Garcia, J., <strong>Mazzotti Pallard, W.</strong>, et al., 2021. Tools for Design of High Temperature Borehole Storage in District Heating Production. <em>Energiforsk</em>, No. 2021:770.</li>
+            <li>D. Spitler, J., Berglöf, K., <strong>Mazzotti Pallard, W.</strong>, Witte, H., 2021. Guidelines for Calculation of Uncertainties. <em>IEA HPT Annex 52</em>.</li>
+            <li style="display:none" class="report-extra">Lazzarotto, A., <strong>Mazzotti Pallard, W.</strong>, Richert, T., Vautrin, A., 2020. Improved Borehole Technology for Geothermal Heat Pumps Development. <em>KTH</em>.</li>
+            <li style="display:none" class="report-extra"><strong>Mazzotti Pallard, W.</strong>, 2021. Case study report for Forskningen – Three plus energy buildings. <em>IEA HPT Annex 52</em>.</li>
+            <li style="display:none" class="report-extra"><strong>Mazzotti, W.</strong>, 2014. Performance characterization of a reversible geothermal heat pump – phase 1 &amp; 2. <em>KTH</em>.</li>
+            <li style="display:none" class="report-extra"><strong>Mazzotti, W.</strong>, 2013. Secondary Fluids Impact on Ice Rink Refrigeration System Performance (Master Thesis). <em>KTH</em>.</li>
+            <li style="display:none" class="report-extra"><strong>Mazzotti, W.</strong>, Acuña, J., Lazzarotto, A., Palm, B., 2018. Deep Boreholes for Ground-Source Heat Pump: Final report. <em>KTH</em>.</li>
+        </ul>
+        <button class="pub-toggle-btn" onclick="toggleReports(this)">Visa alla (8 st) ▾</button>
+    </div>
+
+    <div class="pub-section">
+        <h3>Popular articles &amp; interviews</h3>
+        <ul class="pub-list">
+            <li><strong>Mazzotti, W.</strong>, 2016. Pompes à chaleur géothermiques et fibre optique. <em>Revue Interface</em>.</li>
+            <li><strong>Mazzotti, W.</strong>, 2018. Norsk-svenskt samarbete: utvärdering av 800 m djupa borrhål. <em>Kyla &amp; Värme</em>.</li>
+            <li><strong>Mazzotti, W.</strong>, Acuña, J., 2016. Forskning om djupare borrhål. <em>Kyla+</em>.</li>
+            <li>Interview in Avantisystems magazine, 2016 · Interview in Svensk Geoenergi, 2019.</li>
+        </ul>
+    </div>
+
+    <div class="pub-section">
+        <h3>Awards</h3>
+        <ul class="pub-list">
+            <li>Jury's special prize – Roger Cadiergues' young engineer competition</li>
+            <li>Second prize (ex-aequo) – 2014 REHVA student competition</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ÖVRIGT -->
+<section id="ovrigt" class="fade-in">
+    <h2 class="section-title">Andra åtaganden &amp; fritidsintressen</h2>
+    <div class="other-grid">
+        <div class="other-item">
+            <div>
+                <div class="o-name">IGSHPA, Swedish chapter</div>
+                <div class="o-role">Styrelseledamot</div>
+            </div>
+            <span class="o-years">2020 – 2025</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">Kyltekniska föreningen</div>
+                <div class="o-role">Medlem</div>
+            </div>
+            <span class="o-years">2016 – Nu</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">Climate Fresk Sverige</div>
+                <div class="o-role">Medlem</div>
+            </div>
+            <span class="o-years">2020 – Nu</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">Klimataktion</div>
+                <div class="o-role">Medlem</div>
+            </div>
+            <span class="o-years">2022 – Nu</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">Researchers' desk</div>
+                <div class="o-role">Medlem</div>
+            </div>
+            <span class="o-years">2023 – Nu</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">Ett Hållbart Täby</div>
+                <div class="o-role">Medlem</div>
+            </div>
+            <span class="o-years">2025 – Nu</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">FEGIS² nätverk</div>
+                <div class="o-role">Miljö- och energiteknik, hållbarhet</div>
+            </div>
+            <span class="o-years">2017 – Nu</span>
+        </div>
+        <div class="other-item">
+            <div>
+                <div class="o-name">Fritidsintressen</div>
+                <div class="o-role">Volleyboll (hög nivå 2005–2012), tennis, badminton, squash, skidåkning</div>
+            </div>
+            <span class="o-years"></span>
+        </div>
+    </div>
+
+    <div style="margin-top: 36px;">
+        <h2 class="section-title">Referenser</h2>
+        <p class="refs">Referenser lämnas på begäran.</p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    Willem Mazzotti Pallard &middot; CV 2026 &middot;
+    <a href="mailto:willem.mazzotti@gmail.com">willem.mazzotti@gmail.com</a>
+</footer>
+
+<script>
+// ── Nav scroll effect ──
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ── Active nav link ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+});
+
+// ── Timeline toggle ──
+function toggleDetails(id, btn) {
+    const el = document.getElementById(id);
+    const isOpen = el.style.maxHeight !== '0px' && el.style.maxHeight !== '0';
+    el.style.maxHeight = isOpen ? '0' : el.scrollHeight + 'px';
+    btn.classList.toggle('open', !isOpen);
+    btn.childNodes[0].textContent = isOpen ? 'Visa detaljer ' : 'Dölj detaljer ';
+}
+
+// ── Project filter ──
+function filterProjects(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+        if (tag === 'all' || card.dataset.tags.includes(tag)) {
+            card.style.display = '';
+            setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10);
+        } else {
+            card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+            setTimeout(() => { card.style.display = 'none'; }, 300);
+        }
+    });
+}
+
+// ── Pub toggles ──
+function toggleConf(btn) {
+    const extras = document.querySelectorAll('.conf-extra');
+    const showing = extras[0].style.display !== 'none';
+    extras.forEach(e => e.style.display = showing ? 'none' : '');
+    btn.textContent = showing ? 'Visa alla (13 st) ▾' : 'Visa färre ▴';
+}
+function toggleReports(btn) {
+    const extras = document.querySelectorAll('.report-extra');
+    const showing = extras[0].style.display !== 'none';
+    extras.forEach(e => e.style.display = showing ? 'none' : '');
+    btn.textContent = showing ? 'Visa alla (8 st) ▾' : 'Visa färre ▴';
+}
+
+// ── Scroll fade-in ──
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── Close mobile nav on link click ──
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+
+</body>
+</html>
