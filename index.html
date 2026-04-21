@@ -320,12 +320,27 @@
 
         /* ── PRINT ── */
         @media print {
-            nav, .timeline-toggle, .filter-bar, .pub-toggle-btn, .nav-toggle { display: none !important; }
+            nav, .timeline-toggle, .filter-bar, .pub-toggle-btn, .nav-toggle, .lang-toggle { display: none !important; }
             .hero { padding-top: 40px; }
             .timeline-details { max-height: none !important; }
             section { page-break-inside: avoid; }
             .project-card, .skill-card, .timeline-item { box-shadow: none; border: 1px solid #ddd; }
         }
+
+        /* ── LANG TOGGLE ── */
+        .lang-toggle {
+            display: flex; align-items: center; gap: 4px;
+            background: none; border: 1px solid var(--border); border-radius: 20px;
+            padding: 4px 6px; cursor: pointer; font-size: 1.1rem;
+            transition: all var(--transition); margin-left: 8px;
+        }
+        .lang-toggle:hover { border-color: var(--primary); background: rgba(44,89,224,0.04); }
+        .lang-toggle .lang-opt {
+            padding: 2px 6px; border-radius: 14px; transition: all var(--transition);
+            opacity: 0.45; font-size: 1rem; line-height: 1;
+        }
+        .lang-toggle .lang-opt.active { opacity: 1; background: rgba(44,89,224,0.1); }
+        .lang-toggle .lang-opt img { display: block; border-radius: 2px; }
 
         /* ── ANIMATIONS ── */
         .fade-in {
@@ -347,14 +362,18 @@
             <span></span><span></span><span></span>
         </button>
         <div class="nav-links">
-            <a href="#profil">Profil</a>
-            <a href="#erfarenhet">Erfarenhet</a>
-            <a href="#utbildning">Utbildning</a>
-            <a href="#fardigheter">Färdigheter</a>
-            <a href="#projekt">Projekt</a>
-            <a href="#publikationer">Publikationer</a>
-            <a href="#ovrigt">Övrigt</a>
+            <a href="#profil" data-sv="Profil" data-en="Profile">Profil</a>
+            <a href="#erfarenhet" data-sv="Erfarenhet" data-en="Experience">Erfarenhet</a>
+            <a href="#utbildning" data-sv="Utbildning" data-en="Education">Utbildning</a>
+            <a href="#fardigheter" data-sv="Färdigheter" data-en="Skills">Färdigheter</a>
+            <a href="#projekt" data-sv="Projekt" data-en="Projects">Projekt</a>
+            <a href="#publikationer" data-sv="Publikationer" data-en="Publications">Publikationer</a>
+            <a href="#ovrigt" data-sv="Övrigt" data-en="Other">Övrigt</a>
         </div>
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+            <span class="lang-opt active" data-lang="sv"><img src="https://flagcdn.com/w40/se.png" alt="SV" width="20" height="15"></span>
+            <span class="lang-opt" data-lang="en"><img src="https://flagcdn.com/w40/gb.png" alt="EN" width="20" height="15"></span>
+        </button>
     </div>
 </nav>
 
@@ -363,7 +382,7 @@
     <div class="hero-inner">
         <div class="hero-text">
             <h1>Willem <span>Mazzotti Pallard</span></h1>
-            <div class="hero-meta">
+            <div class="hero-meta" data-sv="Konsult inom energisystem och energiteknik" data-en="Consultant in energy systems and energy technology">
                 Konsult inom energisystem och energiteknik
             </div>
             <div class="hero-socials">
@@ -382,8 +401,8 @@
 
 <!-- PROFIL -->
 <section id="profil" class="fade-in">
-    <h2 class="section-title">Profil</h2>
-    <p class="profile-text">
+    <h2 class="section-title" data-sv="Profil" data-en="Profile">Profil</h2>
+    <p class="profile-text" data-sv="Jag är en engagerad och nyfiken energiingenjör med ett starkt driv för ny teknik, utveckling, vetenskap och matematik. Jag vill gärna bidra till att lösa samhällets nutida och framtida utmaningar, inte minst kring klimatkrisen och energiomställningen. Min bakgrund inkluderar arbete med sektorkoppling mellan elsystemet, värmepumpar och fjärrvärme, där energilager har spelat en central roll i olika projekt. Jag har dessutom ett stort intresse för, och jobbat med, elektrifiering, elmarknader och dess utveckling på kort och långt sikt. Jag tror att energi- och fastighetsbranschen har mycket att vinna på digitalisering och har därför utvecklat mina digitala färdigheter parallellt till mina kompetenser inom energisystem och energiteknik. Jag drivs av att lära mig nya saker och stötta andra när jag kan. Med erfarenhet från både mindre nationella och större internationella projekt har jag upptäckt att jag trivs bäst i en miljö som är dynamisk och kombinerar båda, där lagarbete står i fokus och där jag får möjlighet att tillämpa mina analytiska förmågor." data-en="A dedicated and curious energy engineer with a strong drive for new technology, development, science and mathematics. I am eager to contribute to solving society's current and future challenges, especially those related to the climate crisis and the energy transition. My background includes work on sector coupling between the power grid, heat pumps and district heating, where thermal energy storage has played a central role in various projects. I also have a strong interest in, and experience with, electrification, electricity markets and their development in the short and long term. I believe the energy and real estate sectors have much to gain from digitalization and have therefore developed my digital skills in parallel with my competencies in energy systems and energy technology. I am driven by learning new things and supporting others when I can. With experience from both smaller national and larger international projects, I have found that I thrive best in a dynamic environment that combines both, where teamwork is the focus and where I get the opportunity to apply my analytical skills.">
         Jag är en engagerad och nyfiken energiingenjör med ett starkt driv för ny teknik, utveckling, vetenskap och matematik. Jag vill gärna bidra till att lösa samhällets nutida och framtida utmaningar, inte minst kring klimatkrisen och energiomställningen.
         Min bakgrund inkluderar arbete med sektorkoppling mellan elsystemet, värmepumpar och fjärrvärme, där energilager har spelat en central roll i olika projekt.
         Jag har dessutom ett stort intresse för, och jobbat med, elektrifiering, elmarknader och dess utveckling på kort och långt sikt.
@@ -395,7 +414,7 @@
 
 <!-- ERFARENHET -->
 <section id="erfarenhet" class="fade-in">
-    <h2 class="section-title">Arbetslivserfarenhet</h2>
+    <h2 class="section-title" data-sv="Arbetslivserfarenhet" data-en="Work Experience">Arbetslivserfarenhet</h2>
     <div class="timeline">
 
         <!-- BD -->
@@ -403,7 +422,7 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">Bengt Dahlgren AB</div>
-                    <div class="timeline-subtitle">Co-avdelningschef FoU geoenergi · Projektledare · Affärsutveckling · Partner</div>
+                    <div class="timeline-subtitle" data-sv="Co-avdelningschef FoU geoenergi · Projektledare · Affärsutveckling · Partner" data-en="Co-head of department R&amp;D geoenergy · Project manager · Business development · Partner">Co-avdelningschef FoU geoenergi · Projektledare · Affärsutveckling · Partner</div>
                 </div>
                 <span class="timeline-date">Jun 2015 – Nu</span>
             </div>
@@ -430,15 +449,15 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">Kungliga Tekniska Högskolan</div>
-                    <div class="timeline-subtitle">Doktorand inom bergvärme, geoenergi och borrhåls termiska energilager</div>
+                    <div class="timeline-subtitle" data-sv="Doktorand inom bergvärme, geoenergi och borhåls termiska energilager" data-en="PhD candidate in Energy Technology – modeling, optimization and data analysis">Doktorand inom bergvärme, geoenergi och borhåls termiska energilager</div>
                 </div>
                 <span class="timeline-date">Feb 2016 – Dec 2023</span>
             </div>
             <div class="timeline-details" id="kth-phd-details" style="max-height:0">
                 <ul>
-                    <li>Matematisk modellering av värmeöverföring, invers modellering och optimering</li>
-                    <li>Kurser på doktorandnivå i datadriven modellering, värmeöverföring och energilagring</li>
-                    <li>Projektledning och samverkan med industriaktörer i forskningsnära miljö, inklusive kravställning, metodval, analys och resultatkommunikation</li>
+                    <li data-sv="Matematisk modellering av värmeöverföring, invers modellering och optimering" data-en="Mathematical modeling of heat transfer, inverse modeling and parameter optimization">Matematisk modellering av värmeöverföring, invers modellering och optimering</li>
+                    <li data-sv="Kurser på doktorandnivå i datadriven modellering, värmeöverföring och energilagring" data-en="PhD-level courses in data-driven modeling, heat transfer and energy storage">Kurser på doktorandnivå i datadriven modellering, värmeöverföring och energilagring</li>
+                    <li data-sv="Projektledning och samverkan med industriaktörer i forskningsnära miljö, inklusive kravställning, metodval, analys och resultatkommunikation" data-en="Collaboration with industry stakeholders incl. requirements specification, analysis and communication of results">Projektledning och samverkan med industriaktörer i forskningsnära miljö, inklusive kravställning, metodval, analys och resultatkommunikation</li>
                 </ul>
             </div>
             <button class="timeline-toggle" onclick="toggleDetails('kth-phd-details', this)">
@@ -451,7 +470,7 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">Kungliga Tekniska Högskolan</div>
-                    <div class="timeline-subtitle">Forskningsingenjör – Propan värmepumpar, labbtester, numeriska simuleringar, dataanalys</div>
+                    <div class="timeline-subtitle" data-sv="Forskningsingenjör – Propan värmepumpar, labbtester, numeriska simuleringar, dataanalys" data-en="Research engineer – Propane heat pumps, lab testing, numerical simulations, data analysis">Forskningsingenjör – Propan värmepumpar, labbtester, numeriska simuleringar, dataanalys</div>
                 </div>
                 <span class="timeline-date">Okt 2013 – Okt 2015</span>
             </div>
@@ -462,7 +481,7 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">Energi och Kylanalys</div>
-                    <div class="timeline-subtitle">Projektingenjör / konsult – Avfuktning och kylsystem i ishallar</div>
+                    <div class="timeline-subtitle" data-sv="Projektingenjör / konsult – Avfuktning och kylsystem i ishallar" data-en="Project engineer / consultant – Dehumidification and refrigeration systems in ice rinks">Projektingenjör / konsult – Avfuktning och kylsystem i ishallar</div>
                 </div>
                 <span class="timeline-date">Feb 2014 &amp; Jul 2014</span>
             </div>
@@ -473,13 +492,13 @@
 
 <!-- UTBILDNING -->
 <section id="utbildning" class="fade-in">
-    <h2 class="section-title">Utbildning</h2>
+    <h2 class="section-title" data-sv="Utbildning" data-en="Education">Utbildning</h2>
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">Kungliga Tekniska Högskolan</div>
-                    <div class="timeline-subtitle">Doktorand inom Energiteknik – pågående, planerad disputation Q3 2026</div>
+                    <div class="timeline-subtitle" data-sv="Doktorand inom Energiteknik – pågående, planerad disputation Q3 2026" data-en="PhD candidate in Energy Technology – on-going, planned defense Q3 2026">Doktorand inom Energiteknik – pågående, planerad disputation Q3 2026</div>
                 </div>
                 <span class="timeline-date">2016 – 2023</span>
             </div>
@@ -488,7 +507,7 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">National Institute of Applied Science (INSA), Strasbourg</div>
-                    <div class="timeline-subtitle">Civilingenjör energiteknik</div>
+                    <div class="timeline-subtitle" data-sv="Civilingenjör energiteknik" data-en="Master of Science in Energy Technology">Civilingenjör energiteknik</div>
                 </div>
                 <span class="timeline-date">2008 – 2013</span>
             </div>
@@ -497,7 +516,7 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">Kungliga Tekniska Högskolan</div>
-                    <div class="timeline-subtitle">Examensarbete</div>
+                    <div class="timeline-subtitle" data-sv="Examensarbete" data-en="Master thesis">Examensarbete</div>
                 </div>
                 <span class="timeline-date">2013</span>
             </div>
@@ -506,7 +525,7 @@
             <div class="timeline-header">
                 <div>
                     <div class="timeline-title">University of Iceland</div>
-                    <div class="timeline-subtitle">Utbytestermin</div>
+                    <div class="timeline-subtitle" data-sv="Utbytestermin" data-en="Exchange semester">Utbytestermin</div>
                 </div>
                 <span class="timeline-date">2011</span>
             </div>
@@ -516,10 +535,10 @@
 
 <!-- FÄRDIGHETER -->
 <section id="fardigheter" class="fade-in">
-    <h2 class="section-title">Färdigheter</h2>
+    <h2 class="section-title" data-sv="Färdigheter" data-en="Technical Skills">Färdigheter</h2>
     <div class="skills-grid">
         <div class="skill-card">
-            <h3>Programmering, data &amp; verktyg</h3>
+            <h3 data-sv="Programmering, data &amp; verktyg" data-en="Programming, data &amp; tools">Programmering, data &amp; verktyg</h3>
             <div class="skill-tags">
                 <span class="skill-tag">Julia</span>
                 <span class="skill-tag">Python</span>
@@ -535,7 +554,7 @@
             </div>
         </div>
         <div class="skill-card">
-            <h3>Simulering</h3>
+            <h3 data-sv="Simulering" data-en="Simulation">Simulering</h3>
             <div class="skill-tags">
                 <span class="skill-tag">COMSOL Multiphysics</span>
                 <span class="skill-tag">TRNSYS</span>
@@ -546,7 +565,7 @@
             </div>
         </div>
         <div class="skill-card">
-            <h3>Datainsamling, styrning, GIS &amp; övrigt</h3>
+            <h3 data-sv="Datainsamling, styrning, GIS &amp; övrigt" data-en="Data, GIS &amp; other">Datainsamling, styrning, GIS &amp; övrigt</h3>
             <div class="skill-tags">
                 <span class="skill-tag">ArcGIS</span>
                 <span class="skill-tag">QGIS</span>
@@ -560,12 +579,12 @@
             </div>
         </div>
         <div class="skill-card">
-            <h3>Språk</h3>
+            <h3 data-sv="Språk" data-en="Languages">Språk</h3>
             <div class="skill-tags">
-                <span class="skill-tag">🇫🇷 Franska (modersmål)</span>
-                <span class="skill-tag">🇸🇪 Svenska (flytande)</span>
-                <span class="skill-tag">🇬🇧 Engelska (flytande)</span>
-                <span class="skill-tag">🇪🇸 Spanska (mellan)</span>
+                <span class="skill-tag" data-sv="🇫🇷 Franska (modersmål)" data-en="🇫🇷 French (native)">🇫🇷 Franska (modersmål)</span>
+                <span class="skill-tag" data-sv="🇸🇪 Svenska (flytande)" data-en="🇸🇪 Swedish (fluent)">🇸🇪 Svenska (flytande)</span>
+                <span class="skill-tag" data-sv="🇬🇧 Engelska (flytande)" data-en="🇬🇧 English (fluent)">🇬🇧 Engelska (flytande)</span>
+                <span class="skill-tag" data-sv="🇪🇸 Spanska (mellan)" data-en="🇪🇸 Spanish (intermediate)">🇪🇸 Spanska (mellan)</span>
             </div>
         </div>
     </div>
@@ -573,124 +592,124 @@
 
 <!-- PROJEKT -->
 <section id="projekt" class="fade-in">
-    <h2 class="section-title">Urval av projekt</h2>
+    <h2 class="section-title" data-sv="Urval av projekt" data-en="Selection of Projects">Urval av projekt</h2>
     <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterProjects('all', this)">Alla</button>
+        <button class="filter-btn active" onclick="filterProjects('all', this)" data-sv="Alla" data-en="All">Alla</button>
         <button class="filter-btn" onclick="filterProjects('ai-ml', this)">AI / ML</button>
-        <button class="filter-btn" onclick="filterProjects('energi', this)">Energisystem</button>
-        <button class="filter-btn" onclick="filterProjects('international', this)">Internationellt</button>
+        <button class="filter-btn" onclick="filterProjects('energi', this)" data-sv="Energisystem" data-en="Energy Systems">Energisystem</button>
+        <button class="filter-btn" onclick="filterProjects('international', this)" data-sv="Internationellt" data-en="International">Internationellt</button>
     </div>
     <div class="projects-grid" id="projects-grid">
 
         <div class="project-card" data-tags="ai-ml energi">
             <span class="project-rank">1</span>
-            <div class="p-title">EnergiForsk – Effektauktioner med värmepumpar</div>
-            <div class="p-desc">Efterfrågeflexibilitet med värmepumpar genom VCG-auktioner och ML-baserad prediktering av elanvändning</div>
+            <div class="p-title" data-sv="EnergiForsk – Effektauktioner med värmepumpar" data-en="EnergiForsk – Power Auctions with Heat Pumps">EnergiForsk – Effektauktioner med värmepumpar</div>
+            <div class="p-desc" data-sv="Efterfrågeflexibilitet med värmepumpar genom VCG-auktioner och ML-baserad prediktering av elanvändning" data-en="ML-based prediction of electricity consumption and demand-side flexibility through VCG auctions">Efterfrågeflexibilitet med värmepumpar genom VCG-auktioner och ML-baserad prediktering av elanvändning</div>
             <span class="p-year">2025</span>
         </div>
 
         <div class="project-card" data-tags="ai-ml energi international">
             <span class="project-rank">2</span>
-            <div class="p-title">RECOIN – EU-projekt</div>
-            <div class="p-desc">MPC för geoenergianläggningar, Fault Detection and Diagnosis, ANN-baserad datamodell</div>
-            <span class="p-year">2022 – Nu</span>
+            <div class="p-title" data-sv="RECOIN – EU-projekt" data-en="RECOIN – EU Project">RECOIN – EU-projekt</div>
+            <div class="p-desc" data-sv="MPC för geoenergianläggningar, Fault Detection and Diagnosis, ANN-baserad datamodell" data-en="MPC for geoenergy systems, Fault Detection and Diagnosis, ANN-based data model">MPC för geoenergianläggningar, Fault Detection and Diagnosis, ANN-baserad datamodell</div>
+            <span class="p-year" data-sv="2022 – Nu" data-en="2022 – Present">2022 – Nu</span>
         </div>
 
         <div class="project-card" data-tags="ai-ml energi">
             <span class="project-rank">3</span>
-            <div class="p-title">Loudden – Energiplanering för ett positivenergidistrikt</div>
-            <div class="p-desc">Laddnings-/urladdningsschema för elbilar, V2G, storskaliga termiska energilager kopplade till fjärrvärme</div>
+            <div class="p-title" data-sv="Loudden – Energiplanering för ett positivenergidistrikt" data-en="Loudden – Energy Planning for a Positive Energy District">Loudden – Energiplanering för ett positivenergidistrikt</div>
+            <div class="p-desc" data-sv="Laddnings-/urladdningsschema för elbilar, V2G, storskaliga termiska energilager kopplade till fjärrvärme" data-en="Optimized charging/discharging schedules for electric vehicles (V2G) and thermal storage with district heating">Laddnings-/urladdningsschema för elbilar, V2G, storskaliga termiska energilager kopplade till fjärrvärme</div>
             <span class="p-year">2022 – 2025</span>
         </div>
 
         <div class="project-card" data-tags="ai-ml energi">
             <span class="project-rank">4</span>
-            <div class="p-title">Funktionsutveckling till mjukvara och optimering</div>
-            <div class="p-desc">Simulering av luftbehandlingsaggregat kopplad till värmepumpar för en känd OEM</div>
-            <span class="p-year">2025 – Nu</span>
+            <div class="p-title" data-sv="Funktionsutveckling till mjukvara och optimering" data-en="Feature Development for Software and Optimization">Funktionsutveckling till mjukvara och optimering</div>
+            <div class="p-desc" data-sv="Simulering av luftbehandlingsaggregat kopplad till värmepumpar för en känd OEM" data-en="Simulation and optimization of air handling units coupled to heat pumps for a leading OEM">Simulering av luftbehandlingsaggregat kopplad till värmepumpar för en känd OEM</div>
+            <span class="p-year" data-sv="2025 – Nu" data-en="2025 – Present">2025 – Nu</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">5</span>
-            <div class="p-title">Storskalig bergrumsvärmelager kopplad till fjärrvärme</div>
-            <div class="p-desc">Tekno-ekonomisk utvärdering inkl. ökad elproduktion vintertid, flexibilitet och FCR-marknaden</div>
-            <span class="p-year">2022 – Nu</span>
+            <div class="p-title" data-sv="Storskalig bergrumsvärmelager kopplad till fjärrvärme" data-en="Large-Scale Rock Cavern Thermal Energy Storage with District Heating">Storskalig bergrumsvärmelager kopplad till fjärrvärme</div>
+            <div class="p-desc" data-sv="Tekno-ekonomisk utvärdering inkl. ökad elproduktion vintertid, flexibilitet och FCR-marknaden" data-en="Techno-economic optimization incl. increased winter electricity production, flexibility and FCR market">Tekno-ekonomisk utvärdering inkl. ökad elproduktion vintertid, flexibilitet och FCR-marknaden</div>
+            <span class="p-year" data-sv="2022 – Nu" data-en="2022 – Present">2022 – Nu</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">6</span>
-            <div class="p-title">EnergiForsk – Termiska energilager</div>
-            <div class="p-desc">Högtemperatur BTES i samband med kraftvärmeverk – Design, simuleringar och Pareto-optimering</div>
+            <div class="p-title" data-sv="EnergiForsk – Termiska energilager" data-en="EnergiForsk – Thermal Energy Storage">EnergiForsk – Termiska energilager</div>
+            <div class="p-desc" data-sv="Högtemperatur BTES i samband med kraftvärmeverk – Design, simuleringar och Pareto-optimering" data-en="High-temperature BTES – Design, simulations and Pareto optimization coupled to CHP plants">Högtemperatur BTES i samband med kraftvärmeverk – Design, simuleringar och Pareto-optimering</div>
             <span class="p-year">2018 – 2021</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">7</span>
-            <div class="p-title">Drifttjänst Geoenergi – Akademiska Hus</div>
-            <div class="p-desc">Driftuppföljning och -optimering av en storskalig geoenergianläggning</div>
-            <span class="p-year">2025 – Nu</span>
+            <div class="p-title" data-sv="Drifttjänst Geoenergi – Akademiska Hus" data-en="GSHP Performance Monitoring and Optimization – Akademiska Hus">Drifttjänst Geoenergi – Akademiska Hus</div>
+            <div class="p-desc" data-sv="Driftuppföljning och -optimering av en storskalig geoenergianläggning" data-en="Data-driven operational monitoring and optimization of a large-scale geoenergy system">Driftuppföljning och -optimering av en storskalig geoenergianläggning</div>
+            <span class="p-year" data-sv="2025 – Nu" data-en="2025 – Present">2025 – Nu</span>
         </div>
 
         <div class="project-card" data-tags="energi international">
             <span class="project-rank">8</span>
             <div class="p-title">IEA – HPT Annex 52</div>
-            <div class="p-desc">Långtidsövervakning och prestandauppföljning av storskaliga geoenergisystem med värmepumpar</div>
+            <div class="p-desc" data-sv="Långtidsövervakning och prestandauppföljning av storskaliga geoenergisystem med värmepumpar" data-en="Long-term monitoring and performance evaluation of large-scale ground-source heat pump systems">Långtidsövervakning och prestandauppföljning av storskaliga geoenergisystem med värmepumpar</div>
             <span class="p-year">2018 – 2022</span>
         </div>
 
         <div class="project-card" data-tags="energi international">
             <span class="project-rank">9</span>
-            <div class="p-title">USES4HEAT – EU-projekt</div>
-            <div class="p-desc">Demonstrationsprojekt om säsongslagring av värme i fjärrvärmesystem med spillvärme och solenergi</div>
-            <span class="p-year">2022 – Nu</span>
+            <div class="p-title" data-sv="USES4HEAT – EU-projekt" data-en="USES4HEAT – EU Project">USES4HEAT – EU-projekt</div>
+            <div class="p-desc" data-sv="Demonstrationsprojekt om säsongslagring av värme i fjärrvärmesystem med spillvärme och solenergi" data-en="Demonstration project on seasonal heat storage in district heating systems with waste heat and solar energy">Demonstrationsprojekt om säsongslagring av värme i fjärrvärmesystem med spillvärme och solenergi</div>
+            <span class="p-year" data-sv="2022 – Nu" data-en="2022 – Present">2022 – Nu</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">10</span>
             <div class="p-title">Hefaistos – Tekniska Verken</div>
-            <div class="p-desc">Dynamisk simulering och design av ett 1500 st. borrhålsenergilager i kombination med kraftvärmeverk</div>
+            <div class="p-desc" data-sv="Dynamisk simulering och design av ett 1500 st. borhålsenergilager i kombination med kraftvärmeverk" data-en="Dynamic simulation and design of a 1500-borehole thermal energy storage combined with CHP plants">Dynamisk simulering och design av ett 1500 st. borhålsenergilager i kombination med kraftvärmeverk</div>
             <span class="p-year">2017</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">11</span>
             <div class="p-title">Greenergy – "Energy as a service"</div>
-            <div class="p-desc">Förstudier för geoenergi- och fjärrvärmelösningar (lönsamhetskalkyler) med SEB Nordic Green Energy Fund</div>
+            <div class="p-desc" data-sv="Förstudier för geoenergi- och fjärrvärmelösningar (lönsamhetskalkyler) med SEB Nordic Green Energy Fund" data-en="Pre-studies for geoenergy and district heating solutions (profitability analyses) with SEB Nordic Green Energy Fund">Förstudier för geoenergi- och fjärrvärmelösningar (lönsamhetskalkyler) med SEB Nordic Green Energy Fund</div>
             <span class="p-year">2022 – 2023</span>
         </div>
 
         <div class="project-card" data-tags="international energi">
             <span class="project-rank">12</span>
-            <div class="p-title">Världsbanken – Decarbonization Uzbekistan</div>
-            <div class="p-desc">Samhällsekonomisk utvärdering av miljövänlig teknik för värme och kyla i Uzbekistan</div>
+            <div class="p-title" data-sv="Världsbanken – Decarbonization Uzbekistan" data-en="World Bank – Decarbonization Uzbekistan">Världsbanken – Decarbonization Uzbekistan</div>
+            <div class="p-desc" data-sv="Samhällsekonomisk utvärdering av miljövänlig teknik för värme och kyla i Uzbekistan" data-en="Socio-economic evaluation of environmentally friendly technology for heating and cooling in Uzbekistan">Samhällsekonomisk utvärdering av miljövänlig teknik för värme och kyla i Uzbekistan</div>
             <span class="p-year">2022</span>
         </div>
 
         <div class="project-card" data-tags="international energi">
             <span class="project-rank">13</span>
             <div class="p-title">IEA – HPT Annex 27</div>
-            <div class="p-desc">Kvalitetsstyrning i design, konstruktion och drift av borrhålssystem (riktlinjer)</div>
+            <div class="p-desc" data-sv="Kvalitetsstyrning i design, konstruktion och drift av borhålssystem (riktlinjer)" data-en="Quality management in design, construction and operation of borehole systems (guidelines)">Kvalitetsstyrning i design, konstruktion och drift av borhålssystem (riktlinjer)</div>
             <span class="p-year">2016 – 2020</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">14</span>
-            <div class="p-title">Optimalt flöde i bergvärmepumpsystem</div>
-            <div class="p-desc">Modellering, optimering, labbtester</div>
+            <div class="p-title" data-sv="Optimalt flöde i bergvärmepumpsystem" data-en="Optimal Flow in Ground-Source Heat Pump Systems">Optimalt flöde i bergvärmepumpsystem</div>
+            <div class="p-desc" data-sv="Modellering, optimering, labbtester" data-en="Physical heat pump modeling, constrained optimization, lab testing">Modellering, optimering, labbtester</div>
             <span class="p-year">2022 – 2023</span>
         </div>
 
         <div class="project-card" data-tags="energi">
             <span class="project-rank">15</span>
-            <div class="p-title">Djupa borrhål för bergvärmepumpar</div>
-            <div class="p-desc">Simuleringar, labbtester, tekno-ekonomiska analyser</div>
+            <div class="p-title" data-sv="Djupa borhål för bergvärmepumpar" data-en="Deep Boreholes for Ground-Source Heat Pumps">Djupa borhål för bergvärmepumpar</div>
+            <div class="p-desc" data-sv="Simuleringar, labbtester, tekno-ekonomiska analyser" data-en="Numerical simulations, lab testing, techno-economic analyses">Simuleringar, labbtester, tekno-ekonomiska analyser</div>
             <span class="p-year">2016 – 2018</span>
         </div>
 
         <div class="project-card" data-tags="international energi">
             <span class="project-rank">16</span>
             <div class="p-title">Next Heat Pump Generation – EU project</div>
-            <div class="p-desc">Labbtest, dataanalys och optimering av propan värmepumpar</div>
+            <div class="p-desc" data-sv="Labbtest, dataanalys och optimering av propan värmepumpar" data-en="Lab testing, data analysis and optimization of propane heat pumps">Labbtest, dataanalys och optimering av propan värmepumpar</div>
             <span class="p-year">2013 – 2015</span>
         </div>
 
@@ -699,7 +718,7 @@
 
 <!-- PUBLIKATIONER -->
 <section id="publikationer" class="fade-in">
-    <h2 class="section-title">Publikationer och meriter</h2>
+    <h2 class="section-title" data-sv="Publikationer och meriter" data-en="Publications and Awards">Publikationer och meriter</h2>
 
     <div class="pub-section">
         <h3>Peer-reviewed journal articles</h3>
@@ -730,7 +749,7 @@
             <li style="display:none" class="conf-extra">Rogstam, J., <strong>Mazzotti, W.</strong>, 2014. Ice rink dehumidification systems. <em>11th IEA HPC</em>, Montréal.</li>
             <li style="display:none" class="conf-extra">Xu, T., Sawalha, S., <strong>Mazzotti, W.</strong>, Palm, B., 2016. Performance evaluation of a large capacity air-water HP. <em>IIR GL2016</em>, Edinburgh.</li>
         </ul>
-        <button class="pub-toggle-btn" onclick="toggleConf(this)">Visa alla (13 st) ▾</button>
+        <button class="pub-toggle-btn" onclick="toggleConf(this)" data-sv="Visa alla (13 st) ▾" data-en="Show all (13) ▾">Visa alla (13 st) ▾</button>
     </div>
 
     <div class="pub-section">
@@ -745,7 +764,7 @@
             <li style="display:none" class="report-extra"><strong>Mazzotti, W.</strong>, 2013. Secondary Fluids Impact on Ice Rink Refrigeration System Performance (Master Thesis). <em>KTH</em>.</li>
             <li style="display:none" class="report-extra"><strong>Mazzotti, W.</strong>, Acuña, J., Lazzarotto, A., Palm, B., 2018. Deep Boreholes for Ground-Source Heat Pump: Final report. <em>KTH</em>.</li>
         </ul>
-        <button class="pub-toggle-btn" onclick="toggleReports(this)">Visa alla (8 st) ▾</button>
+        <button class="pub-toggle-btn" onclick="toggleReports(this)" data-sv="Visa alla (8 st) ▾" data-en="Show all (8) ▾">Visa alla (8 st) ▾</button>
     </div>
 
     <div class="pub-section">
@@ -769,69 +788,69 @@
 
 <!-- ÖVRIGT -->
 <section id="ovrigt" class="fade-in">
-    <h2 class="section-title">Andra åtaganden &amp; fritidsintressen</h2>
+    <h2 class="section-title" data-sv="Andra åtaganden &amp; fritidsintressen" data-en="Other Commitments &amp; Hobbies">Andra åtaganden &amp; fritidsintressen</h2>
     <div class="other-grid">
         <div class="other-item">
             <div>
                 <div class="o-name">IGSHPA, Swedish chapter</div>
-                <div class="o-role">Styrelseledamot</div>
+                <div class="o-role" data-sv="Styrelseledamot" data-en="Board member">Styrelseledamot</div>
             </div>
             <span class="o-years">2020 – 2025</span>
         </div>
         <div class="other-item">
             <div>
-                <div class="o-name">Kyltekniska föreningen</div>
-                <div class="o-role">Medlem</div>
+                <div class="o-name" data-sv="Kyltekniska föreningen" data-en="Swedish Society of Refrigeration">Kyltekniska föreningen</div>
+                <div class="o-role" data-sv="Medlem" data-en="Member">Medlem</div>
             </div>
-            <span class="o-years">2016 – Nu</span>
+            <span class="o-years" data-sv="2016 – Nu" data-en="2016 – Present">2016 – Nu</span>
         </div>
         <div class="other-item">
             <div>
                 <div class="o-name">Climate Fresk Sverige</div>
-                <div class="o-role">Medlem</div>
+                <div class="o-role" data-sv="Medlem" data-en="Member">Medlem</div>
             </div>
-            <span class="o-years">2020 – Nu</span>
+            <span class="o-years" data-sv="2020 – Nu" data-en="2020 – Present">2020 – Nu</span>
         </div>
         <div class="other-item">
             <div>
                 <div class="o-name">Klimataktion</div>
-                <div class="o-role">Medlem</div>
+                <div class="o-role" data-sv="Medlem" data-en="Member">Medlem</div>
             </div>
-            <span class="o-years">2022 – Nu</span>
+            <span class="o-years" data-sv="2022 – Nu" data-en="2022 – Present">2022 – Nu</span>
         </div>
         <div class="other-item">
             <div>
                 <div class="o-name">Researchers' desk</div>
-                <div class="o-role">Medlem</div>
+                <div class="o-role" data-sv="Medlem" data-en="Member">Medlem</div>
             </div>
-            <span class="o-years">2023 – Nu</span>
+            <span class="o-years" data-sv="2023 – Nu" data-en="2023 – Present">2023 – Nu</span>
         </div>
         <div class="other-item">
             <div>
                 <div class="o-name">Ett Hållbart Täby</div>
-                <div class="o-role">Medlem</div>
+                <div class="o-role" data-sv="Medlem" data-en="Member">Medlem</div>
             </div>
-            <span class="o-years">2025 – Nu</span>
+            <span class="o-years" data-sv="2025 – Nu" data-en="2025 – Present">2025 – Nu</span>
         </div>
         <div class="other-item">
             <div>
                 <div class="o-name">FEGIS² nätverk</div>
-                <div class="o-role">Miljö- och energiteknik, hållbarhet</div>
+                <div class="o-role" data-sv="Miljö- och energiteknik, hållbarhet" data-en="Environmental and energy technology, sustainability">Miljö- och energiteknik, hållbarhet</div>
             </div>
-            <span class="o-years">2017 – Nu</span>
+            <span class="o-years" data-sv="2017 – Nu" data-en="2017 – Present">2017 – Nu</span>
         </div>
         <div class="other-item">
             <div>
-                <div class="o-name">Fritidsintressen</div>
-                <div class="o-role">Volleyboll (hög nivå 2005–2012), tennis, badminton, squash, skidåkning</div>
+                <div class="o-name" data-sv="Fritidsintressen" data-en="Hobbies">Fritidsintressen</div>
+                <div class="o-role" data-sv="Volleyboll (hög nivå 2005–2012), tennis, badminton, squash, skidåkning" data-en="Volleyball (high-level athlete 2005–2012), tennis, badminton, squash, skiing">Volleyboll (hög nivå 2005–2012), tennis, badminton, squash, skidåkning</div>
             </div>
             <span class="o-years"></span>
         </div>
     </div>
 
     <div style="margin-top: 36px;">
-        <h2 class="section-title">Referenser</h2>
-        <p class="refs">Referenser lämnas på begäran.</p>
+        <h2 class="section-title" data-sv="Referenser" data-en="References">Referenser</h2>
+        <p class="refs" data-sv="Referenser lämnas på begäran." data-en="References available upon request.">Referenser lämnas på begäran.</p>
     </div>
 </section>
 
@@ -868,7 +887,9 @@ function toggleDetails(id, btn) {
     const isOpen = el.style.maxHeight !== '0px' && el.style.maxHeight !== '0';
     el.style.maxHeight = isOpen ? '0' : el.scrollHeight + 'px';
     btn.classList.toggle('open', !isOpen);
-    btn.childNodes[0].textContent = isOpen ? 'Visa detaljer ' : 'Dölj detaljer ';
+    const showText = currentLang === 'sv' ? 'Visa detaljer ' : 'Show details ';
+    const hideText = currentLang === 'sv' ? 'Dölj detaljer ' : 'Hide details ';
+    btn.childNodes[0].textContent = isOpen ? showText : hideText;
 }
 
 // ── Project filter ──
@@ -891,13 +912,17 @@ function toggleConf(btn) {
     const extras = document.querySelectorAll('.conf-extra');
     const showing = extras[0].style.display !== 'none';
     extras.forEach(e => e.style.display = showing ? 'none' : '');
-    btn.textContent = showing ? 'Visa alla (13 st) ▾' : 'Visa färre ▴';
+    btn.textContent = showing
+        ? (currentLang === 'sv' ? 'Visa alla (13 st) ▾' : 'Show all (13) ▾')
+        : (currentLang === 'sv' ? 'Visa färre ▴' : 'Show fewer ▴');
 }
 function toggleReports(btn) {
     const extras = document.querySelectorAll('.report-extra');
     const showing = extras[0].style.display !== 'none';
     extras.forEach(e => e.style.display = showing ? 'none' : '');
-    btn.textContent = showing ? 'Visa alla (8 st) ▾' : 'Visa färre ▴';
+    btn.textContent = showing
+        ? (currentLang === 'sv' ? 'Visa alla (8 st) ▾' : 'Show all (8) ▾')
+        : (currentLang === 'sv' ? 'Visa färre ▴' : 'Show fewer ▴');
 }
 
 // ── Scroll fade-in ──
@@ -918,6 +943,48 @@ document.querySelectorAll('.email-link').forEach(a => {
     const txt = a.querySelector('.email-text');
     if (txt) txt.textContent = addr;
 });
+
+// ── Language toggle ──
+let currentLang = 'sv';
+function toggleLang() {
+    currentLang = currentLang === 'sv' ? 'en' : 'sv';
+    document.documentElement.lang = currentLang;
+
+    // Update all elements with data-sv / data-en
+    document.querySelectorAll('[data-sv][data-en]').forEach(el => {
+        el.innerHTML = el.dataset[currentLang];
+    });
+
+    // Update toggle button active state
+    document.querySelectorAll('.lang-opt').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.lang === currentLang);
+    });
+
+    // Update timeline toggle buttons text
+    document.querySelectorAll('.timeline-toggle').forEach(btn => {
+        const isOpen = btn.classList.contains('open');
+        const showText = currentLang === 'sv' ? 'Visa detaljer ' : 'Show details ';
+        const hideText = currentLang === 'sv' ? 'Dölj detaljer ' : 'Hide details ';
+        btn.childNodes[0].textContent = isOpen ? hideText : showText;
+    });
+
+    // Update pub toggle buttons
+    document.querySelectorAll('.pub-toggle-btn').forEach(btn => {
+        if (btn.onclick.toString().includes('toggleConf')) {
+            const extras = document.querySelectorAll('.conf-extra');
+            const showing = extras[0] && extras[0].style.display !== 'none';
+            btn.textContent = showing
+                ? (currentLang === 'sv' ? 'Visa färre ▴' : 'Show fewer ▴')
+                : (currentLang === 'sv' ? 'Visa alla (13 st) ▾' : 'Show all (13) ▾');
+        } else {
+            const extras = document.querySelectorAll('.report-extra');
+            const showing = extras[0] && extras[0].style.display !== 'none';
+            btn.textContent = showing
+                ? (currentLang === 'sv' ? 'Visa färre ▴' : 'Show fewer ▴')
+                : (currentLang === 'sv' ? 'Visa alla (8 st) ▾' : 'Show all (8) ▾');
+        }
+    });
+}
 </script>
 
 </body>
